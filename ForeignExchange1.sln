@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForeignExchange1.iOS", "For
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForeignExchange1.UWP", "ForeignExchange1\ForeignExchange1.UWP\ForeignExchange1.UWP.csproj", "{B3731CA1-8D2F-4577-8413-D5DF151094A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForeignExchange1", "ForeignExchange1\ForeignExchange1\ForeignExchange1.csproj", "{FB35456D-7661-4C4A-B405-1D460BC175C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForeignExchange1", "ForeignExchange1\ForeignExchange1\ForeignExchange1.csproj", "{FB35456D-7661-4C4A-B405-1D460BC175C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -180,6 +180,7 @@ Global
 		{B3731CA1-8D2F-4577-8413-D5DF151094A6}.AppStore|x86.Build.0 = Release|x86
 		{B3731CA1-8D2F-4577-8413-D5DF151094A6}.AppStore|x86.Deploy.0 = Release|x86
 		{B3731CA1-8D2F-4577-8413-D5DF151094A6}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B3731CA1-8D2F-4577-8413-D5DF151094A6}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{B3731CA1-8D2F-4577-8413-D5DF151094A6}.Debug|ARM.ActiveCfg = Debug|ARM
 		{B3731CA1-8D2F-4577-8413-D5DF151094A6}.Debug|ARM.Build.0 = Debug|ARM
 		{B3731CA1-8D2F-4577-8413-D5DF151094A6}.Debug|ARM.Deploy.0 = Debug|ARM
