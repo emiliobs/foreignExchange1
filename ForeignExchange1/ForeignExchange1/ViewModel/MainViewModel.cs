@@ -44,10 +44,10 @@ namespace ForeignExchange1.ViewModel
             set;
         }
 
-        public object IsEnable
+        public bool IsEnable
         {
             get;
-            set; 
+            set;
         }
 
         public string Result
@@ -56,23 +56,32 @@ namespace ForeignExchange1.ViewModel
             set;
         }
 
+       
+
         #endregion
 
+        #region Contructor
+
+        public MainViewModel()
+        {
+                
+        }
+        #endregion
 
         #region Commands
 
         public ICommand ConvertCommand
         {
-            get { return new RelayCommand(convert); }
+            get { return  new RelayCommand(Convert);}
         }
 
-        
+
 
         #endregion
 
         #region Methods
 
-        private void convert()
+        private void Convert()
         {
             throw new NotImplementedException();
         }

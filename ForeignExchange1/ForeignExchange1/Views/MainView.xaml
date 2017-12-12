@@ -3,7 +3,6 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ForeignExchange1.Views.MainView"
-             BackgroundColor="Yellow"
              BindingContext="{Binding  Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <StackLayout Padding="20,30,20,10">
@@ -27,7 +26,7 @@
             <Picker 
                 ItemDisplayBinding="{Binding Name}"
                 ItemsSource="{Binding Rates}"
-                SelectedIndex="{Binding SourceRate, Mode=TwoWay}"
+                SelectedItem="{Binding SourceRate, Mode=TwoWay}"
                 Title="Select a source rate.....">
             </Picker>
             <Label
@@ -36,7 +35,7 @@
             <Picker 
                 ItemDisplayBinding="{Binding Name}"
                 ItemsSource="{Binding Rates}"
-                SelectedIndex="{Binding TargetRate, Mode=TwoWay}"
+                SelectedItem="{Binding TargetRate, Mode=TwoWay}"
                 Title="Select a Target rate.....">
             </Picker>
             <ActivityIndicator
