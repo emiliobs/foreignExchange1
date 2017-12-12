@@ -5,7 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MvvmLight" Version="5.3.0" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\..\..\..\..\.nuget\packages\mvvmlightlibs\5.3.0\lib\monoandroid1\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
