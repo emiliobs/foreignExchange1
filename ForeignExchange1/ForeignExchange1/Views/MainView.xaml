@@ -4,8 +4,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ForeignExchange1.Views.MainView"
              BindingContext="{Binding  Main, Source={StaticResource Locator}}">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    iOS="20,30,20,10"
+                    Android="10">  
+        </OnPlatform>
+
+    </ContentPage.Padding>   
+
     <ContentPage.Content>
-        <StackLayout Padding="20,30,20,10">
+        <StackLayout>
             <Label 
                    FontAttributes="Bold, Italic"
                    FontSize="Large"
