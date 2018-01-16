@@ -6,6 +6,7 @@ using System.Windows.Input;
 using ForeignExchange1.Annotations;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace ForeignExchange1.ViewModel
 {
@@ -130,7 +131,7 @@ namespace ForeignExchange1.ViewModel
 
         #region Methods
 
-        async private void LoadRates()
+        private async void LoadRates()
         {
             IsRunning = true;      
             Result = "Loading Rates.!!";
@@ -175,9 +176,36 @@ namespace ForeignExchange1.ViewModel
 
         }
 
-        private void Convert()
+        private async void Convert()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(Amount))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error","You must enter a value in amount.","Acept");
+                return;
+            }
+
+            decimal amount = 0;
+            if (!decimal.TryParse(Amount, out  amount))
+            {
+                await Application.Current.MainPage.DisplayAlert("Error","You must enter a numeric value in amount.","Acept");
+                return;
+            }
+
+            if (SourceRate == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error","You must select a source rate.","Acept");
+                return;
+            }
+
+            if (TargetRate == null)
+            {
+                await  Application.Current.MainPage.DisplayAlert("Error","You must select a target rate.","Acept");
+                return;
+            }
+
+            var amountConvert = amount / (decimal)SourceRate.TaxRate * (decimal)TargetRate.TaxRate;
+
+            Result = $"{SourceRate.Code} {amount:C2} = {TargetRate.Code} {amountConvert:C2}";
         }
 
         #endregion
