@@ -89,7 +89,10 @@
                     Grid.RowSpan="2"   
                     HeightRequest="30"
                     Source="sw.png"
-                    WidthRequest="30">
+                    WidthRequest="30">  
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SwitcheCommand}"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
                 </Image>
 
             </Grid>  

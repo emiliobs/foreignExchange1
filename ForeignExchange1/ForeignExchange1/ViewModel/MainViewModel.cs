@@ -24,6 +24,9 @@ namespace ForeignExchange1.ViewModel
          bool _isEnable;   
          string _result;
          ObservableCollection<Rate> _rates;
+        private Rate _sourceRate;
+        private Rate _targetRate;
+
 
         #endregion
 
@@ -52,14 +55,29 @@ namespace ForeignExchange1.ViewModel
 
         public Rate SourceRate
         {
-            get;
-            set;
+            get => _sourceRate;
+            set
+            {
+                if (_sourceRate != value)
+                {
+                    _sourceRate = value;
+                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SourceRate)));
+                }
+            }
         }
 
         public Rate TargetRate
         {
-            get;
-            set;
+            get => _targetRate;
+            set
+            {
+                if (_targetRate != value)
+                {
+                    _targetRate = value;
+                   // PropertyChanged?.Invoke(this, new  PropertyChangedEventArgs(nameof(TargetRate)));
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public bool IsRunning
@@ -125,11 +143,28 @@ namespace ForeignExchange1.ViewModel
             get { return  new RelayCommand(Convert);}
         }
 
-
-
+        public ICommand SwitcheCommand
+        {
+            get
+            {
+                return  new RelayCommand(Switche);
+            }
+        }
+          
         #endregion
 
         #region Methods
+
+        private void Switche()
+        {
+           //aqui intercambio los valores de los rates, origen y destino:
+            var auxRates = SourceRate;
+            SourceRate = TargetRate;
+            TargetRate = auxRates;
+
+            //Aqui llamo al metodo de conver que ya existe y funciona.!!!
+            Convert();
+        }
 
         private async void LoadRates()
         {
