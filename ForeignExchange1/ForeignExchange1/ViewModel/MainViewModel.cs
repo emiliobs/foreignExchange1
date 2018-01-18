@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using ForeignExchange1.Annotations;
+using ForeignExchange1.Helpars;
 using GalaSoft.MvvmLight.Command;
 using Newtonsoft.Json;
 using Xamarin.Forms;
@@ -26,11 +27,25 @@ namespace ForeignExchange1.ViewModel
          ObservableCollection<Rate> _rates;
         private Rate _sourceRate;
         private Rate _targetRate;
+        private string _status;
 
 
         #endregion
 
         #region Properties
+
+        public String Status
+        {
+            get => _status;
+            set
+            {
+                if (_status != value)
+                {
+                    value = _status;
+                   OnPropertyChanged();
+                }
+            }
+        }
 
         public string Amount
         {
@@ -150,7 +165,9 @@ namespace ForeignExchange1.ViewModel
                 return  new RelayCommand(Switche);
             }
         }
-          
+
+       
+
         #endregion
 
         #region Methods
@@ -215,7 +232,7 @@ namespace ForeignExchange1.ViewModel
         {
             if (string.IsNullOrEmpty(Amount))
             {
-                await Application.Current.MainPage.DisplayAlert("Error","You must enter a value in amount.","Acept");
+                await Application.Current.MainPage.DisplayAlert(Languages.Error,Languages.AmountValidation,Languages.Accept);
                 return;
             }
 
