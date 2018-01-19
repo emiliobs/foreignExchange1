@@ -144,6 +144,7 @@ namespace ForeignExchange1.ViewModel
 
         public MainViewModel()
         {
+            apiService  = new ApiService.ApiService();
             LoadRates();
         }
 
@@ -166,8 +167,13 @@ namespace ForeignExchange1.ViewModel
             }
         }
 
-       
 
+
+        #endregion
+
+        #region Services
+
+        private ApiService.ApiService apiService;
         #endregion
 
         #region Methods
@@ -188,43 +194,24 @@ namespace ForeignExchange1.ViewModel
             IsRunning = true;      
             Result = "Loading Rates.!!";
 
-            try
+            var response = await apiService.GetList<Rate>("http://apiexchangerates.azurewebsites.net", "/api/rates");
+
+            if (!response.IsSuccess)
             {
-                  //Aqui consumo los datos
-                //aqui cargo la clase:
-                var client = new HttpClient();
-                client.BaseAddress = new Uri("http://apiexchangerates.azurewebsites.net");
-                var controller = "/api/rates";
-
-                var response = await  client.GetAsync(controller);
-                var result = await response.Content.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    IsRunning = false;
-                    Result = result;
-                }
-
-                //aqui serializo el string que vienes desde el rest:
-                var rates = JsonConvert.DeserializeObject<List<Rate>>(result);
-
-
-                //aqui  convierto la list en un observablecollection:
-                Rates = new ObservableCollection<Rate>(rates);
-
                 IsRunning = false;
-                //Result = result;   
-                IsEnable = true;
-                Result = "Ready to Convert";
-                                            
-            }
-            catch (Exception ex)
-            {
+                Result = response.Message;
 
-                //sihay error:
-                IsRunning = false;
-                Result = ex.Message;
+                return;
+                
             }
+
+            Rates = new ObservableCollection<Rate>((List<Rate>)response.Result);
+            IsRunning = false;
+            IsEnable = true;
+            Result = "Ready to Convert.!";
+           
+            
+
 
         }
 
