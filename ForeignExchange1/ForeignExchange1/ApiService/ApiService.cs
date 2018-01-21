@@ -6,11 +6,42 @@ using System.Text;
 using System.Threading.Tasks;
 using ForeignExchange1.Models;
 using Newtonsoft.Json;
+using Plugin.Connectivity;
 
 namespace ForeignExchange1.ApiService
 {
     public class ApiService
     {
+        public async Task<Response> CheckConnection()
+        {
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                return   new Response()
+                {
+                    IsSuccess = false,
+                    Message = "Check your internet  settting.!",
+                };
+            }
+            var response = await CrossConnectivity.Current.IsRemoteReachable("google.com");
+
+                if (!response)
+                {
+                   return new Response()
+                   {
+                       IsSuccess =  true,
+                       Message =  "Check your internet connection.!",
+                   };
+                }
+
+                return new Response()
+                {
+                    IsSuccess =  true,
+
+                };
+
+           
+        }
+
         public async Task<Response> GetList<T>(string urlBase, string controller)
         {
             try

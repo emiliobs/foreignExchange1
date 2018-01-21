@@ -41,7 +41,7 @@ namespace ForeignExchange1.ViewModel
             {
                 if (_status != value)
                 {
-                    value = _status;
+                    _status = value;
                    OnPropertyChanged();
                 }
             }
@@ -194,6 +194,15 @@ namespace ForeignExchange1.ViewModel
             IsRunning = true;      
             Result = "Loading Rates.!!";
 
+            var connection = await apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                IsRunning = false;
+                Result = connection.Message;
+                return;
+                
+            }
+
             var response = await apiService.GetList<Rate>("http://apiexchangerates.azurewebsites.net", "/api/rates");
 
             if (!response.IsSuccess)
@@ -209,8 +218,9 @@ namespace ForeignExchange1.ViewModel
             IsRunning = false;
             IsEnable = true;
             Result = "Ready to Convert.!";
-           
-            
+            Status = "Rates loaded from internet.!";
+
+
 
 
         }

@@ -22,15 +22,15 @@
                    HorizontalOptions="Center" 
                    Margin="10"
                    Text="{i18n:Translate Title}"
-                   VerticalOptions="Center">                
-            </Label>   
-            
+                   VerticalOptions="Center">
+            </Label>
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions> 
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width=".5*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -82,22 +82,22 @@
                     ItemsSource="{Binding Rates}"
                     SelectedItem="{Binding TargetRate, Mode=TwoWay}"
                     Title="Select a Target rate.....">
-                </Picker>  
-                
+                </Picker>
+
                 <Image
                     Grid.Column="2"
                     Grid.Row="1"
                     Grid.RowSpan="2"   
                     HeightRequest="30"
                     Source="sw.png"
-                    WidthRequest="30">  
+                    WidthRequest="30">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SwitcheCommand}"></TapGestureRecognizer>
                     </Image.GestureRecognizers>
                 </Image>
 
-            </Grid>  
-                     
+            </Grid>
+
             <ActivityIndicator
                 IsRunning="{Binding IsRunning, Mode=TwoWay}">
             </ActivityIndicator>
@@ -110,7 +110,7 @@
                 IsEnabled="{Binding IsEnable, Mode=TwoWay}"
                 Text="Convert....."
                 TextColor="White">
-                
+
             </Button>
             <Label
                 BackgroundColor="Silver"
@@ -120,8 +120,10 @@
                 Text="{Binding Result, Mode=TwoWay}"
                 VerticalOptions="FillAndExpand"
                 VerticalTextAlignment="Center">
-            </Label>   
+              </Label>
+            
             <Label HorizontalOptions="Center" Text="{Binding Status, Mode=TwoWay}"></Label>
-        </StackLayout>
+
+                </StackLayout>
     </ContentPage.Content>
 </ContentPage>
