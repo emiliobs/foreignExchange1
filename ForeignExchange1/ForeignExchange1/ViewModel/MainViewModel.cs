@@ -219,7 +219,7 @@ namespace ForeignExchange1.ViewModel
             IsEnable = true;
             Result = "Ready to Convert.!";
             Status = "Rates loaded from internet.!";
-             //hhhh
+            
 
 
 
