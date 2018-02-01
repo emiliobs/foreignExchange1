@@ -9,7 +9,7 @@ namespace ForeignExchange1.Service
     using System.Collections.Generic;
     using System.Text;
 
-    public class DataSeervice
+    public class DataService
     {
         public bool DeleteAll<T>() where T : class
         {

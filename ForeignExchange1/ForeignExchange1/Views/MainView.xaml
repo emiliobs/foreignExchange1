@@ -122,7 +122,12 @@
                 VerticalTextAlignment="Center">
               </Label>
             
-            <Label HorizontalOptions="Center" Text="{Binding Status, Mode=TwoWay}"></Label>
+            <Label 
+                HorizontalOptions="Center" 
+                Text="{Binding Status, Mode=TwoWay}"
+                TextColor="Black">
+
+            </Label>
 
                 </StackLayout>
     </ContentPage.Content>
