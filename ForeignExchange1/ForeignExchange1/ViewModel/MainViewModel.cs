@@ -212,6 +212,7 @@ namespace ForeignExchange1.ViewModel
             else
             {
                await LoadDataFromApi();
+
             }
 
             //if (!connection.IsSuccess)
@@ -219,7 +220,7 @@ namespace ForeignExchange1.ViewModel
             //    IsRunning = false;
             //    Result = connection.Message;
             //    return;
-                
+
             //}
 
             if (rates.Count == 0)
@@ -227,6 +228,7 @@ namespace ForeignExchange1.ViewModel
                 IsRunning = false;
                 IsEnable = false;
                 Result = "There are not internet connection and not load previously rate, Please try again with internet connection.";
+                Status = "There are not connection form internet.";
                 return;
             }
            
